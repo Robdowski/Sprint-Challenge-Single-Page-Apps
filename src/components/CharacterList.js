@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import { Link } from "react-router-dom";
-import SearchForm from "./SearchForm";
+import SearchBar from "./SearchBar";
 import styled from "styled-components"
  
 const CardContainer = styled.div`
@@ -36,7 +36,7 @@ export default function CharacterList() {
     
     <section className="character-list">
     <CardContainer>
-      <SearchForm {...props} />
+      <SearchBar props={characters} />
       {characters.map(item => 
         <CharacterCard key={item.id} name={item.name} species={item.species} origin={item.origin.name} status={item.status} />
       )}
