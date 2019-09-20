@@ -1,4 +1,13 @@
-import React from "react";
-import ReactSearchBox from "react-search-box"
+import React from 'react'
+
+export default function SearchForm() {
+  const handleChanges = 
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
 
 
