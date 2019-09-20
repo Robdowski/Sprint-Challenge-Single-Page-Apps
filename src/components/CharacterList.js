@@ -6,16 +6,12 @@ import SearchBar from "./SearchBar";
 import styled from "styled-components"
  
 const CardContainer = styled.div`
-  display:flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   width:100%;
   margin: 0 auto;
   padding: 0;
-  justify-content: center;
 `
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [characters, setCharacters] = useState([])
   useEffect(() => {
@@ -25,7 +21,6 @@ export default function CharacterList() {
     .get("https://rickandmortyapi.com/api/character/")
     .then(res => {
       setCharacters(res.data.results)
-      console.log(res.data.results)
     })
     .catch(error => {
       console.log("The data was not returned!", error)
@@ -36,11 +31,8 @@ export default function CharacterList() {
     
     <section className="character-list">
     <CardContainer>
-      <SearchBar props={characters} />
-      {characters.map(item => 
-        <CharacterCard key={item.id} name={item.name} species={item.species} origin={item.origin.name} status={item.status} />
-      )}
-      </CardContainer>
+      <SearchBar  characters={characters} />
+    </CardContainer>
     </section>
   );
 }
